@@ -5,7 +5,7 @@ class ScoresController < ApplicationController
   
   def index
     @scores = current_user.scores.order('date DESC').page(params[:page])
-    @bestscore=current_user.scores.order(:score_total)
+    @bestscore=current_user.scores.order(:score_total).first
   end
 
   def new

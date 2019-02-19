@@ -3,8 +3,14 @@
 </div>
 
 <div class="datas">
- <h2>&nbsp;<span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Best Score &nbsp;&gt;&gt;&nbsp;<%=@bestscore.first.score_total%></h2>
- <h2 style="color: yellow;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Date:&nbsp;<%=@bestscore.first.date%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course:&nbsp;<%=@bestscore.first.course.name%>&nbsp;-</h2>
+ <% if @bestscore.present? %>
+   <h2>&nbsp;<span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Best Score &nbsp;&gt;&gt;&nbsp;<%=@bestscore.score_total%></h2>
+ 
+   <h2 style="color: yellow;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Date:&nbsp;<%=@bestscore.date%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course:&nbsp;<%=@bestscore.course.name%>&nbsp;-</h2>
+ <% else %>
+   <h2>&nbsp;<span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Best Score &nbsp;&gt;&gt;&nbsp;</h2>
+ <% end %>
+ 
  <h2>&nbsp;<span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Average Score &nbsp;&gt;&gt;&nbsp;<%=@scores.average(:score_total)%></h2>
  <h2>&nbsp;<span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Yearly Average &nbsp;&gt;&gt;&nbsp;<%@scores.group('Year(date)').average(:score_total).map{|k,v| [k,v.to_f]}.to_h.each do|year,year_average|%>
  Y:&nbsp;<%=year%>&nbsp;/&nbsp;<%=year_average%>&nbsp;&nbsp;&nbsp;
