@@ -2,11 +2,10 @@ class ScoresController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   before_action :set_user, only: [:show,:edit,:update]
-
   
   def index
     @scores = current_user.scores.order('date DESC').page(params[:page])
-    @bestscore=current_user.scores.order(:score_total).first
+    @bestscore=current_user.scores.order(:score_total)
   end
 
   def new
@@ -58,6 +57,7 @@ class ScoresController < ApplicationController
   end
   
   private
+  
   
   def set_user
     @score=current_user.scores.find(params[:id])
