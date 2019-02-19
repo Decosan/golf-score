@@ -1,0 +1,31 @@
+<h1>Select Golf Course</h1>
+
+<div class="panel-group" id="sampleAccordion">
+	<div class="panel panel-default">
+	  <% @courses.pluck(:alphabet).uniq.sort.each do|course_alphabet| %>
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<a data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse1">
+					<%=course_alphabet%>
+				</a>
+			</h3>
+		</div>
+		<div id="sampleAccordionCollapse1" class="panel-collapse collapse in">
+		  <% @courses.select{|c|c.alphabet==course_alphabet}.each do|course|%>
+			<div class="panel-body">
+			  
+			  <%= link_to course_path(course.id) do %>
+				<h4>
+				  <button class="btn <%= more_zero(@scores.where(course_id: course.id).count) %>" type="button">
+  				  Rounds <span class="badge"><%=@scores.where(course_id: course.id).count%></span>
+          </button>
+				  <%=course.name%>
+        </h4>  
+				<% end %>
+			</div>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+</div>	
+<%= paginate(@courses) %>

@@ -1,0 +1,41 @@
+<h1>Create New Score</h1>
+
+<%=form_for(@score)do|f|%>
+
+<%= f.label :date,"Date (Year/Month/Day)" %>
+<%= f.date_select :date, {:date_separator => "Please select"},class:"form-control" %>
+
+<%= f.label :course_id,"Course Select" %>
+<%= select_tag 'score[course_id]', options_from_collection_for_select(@courses, :id, :name),class:"form-control" %>
+
+<%= f.label :score_out,"Score (Out)" %>
+<%= f.text_field :score_out,class:"form-control" %>
+
+<%= f.label :score_in,"Score (In)" %>
+<%= f.text_field :score_in,class:"form-control" %>
+
+<%= f.label :score_total,"Total Score" %>
+<%= f.text_field :score_total,class:"form-control" %>
+
+<%= f.label :category_id,"Score Range Select" %>
+<%= select_tag 'score[category_id]', options_from_collection_for_select(@categories, :id, :score_range),class:"form-control" %>
+
+
+<%= f.label :put_out,"Put (Out)" %>
+<%= f.text_field :put_out,class:"form-control" %>
+
+<%= f.label :put_in,"Put (In)" %>
+<%= f.text_field :put_in,class:"form-control" %>
+
+<%= f.label :put_total,"Total Put" %>
+<%= f.text_field :put_total,class:"form-control" %>
+
+<%= f.label :memo,"Comment (Option,max 255)" %>
+<%= f.text_field :memo,class:"form-control" %>
+
+<%= f.label :image2,"Attach Picture (Option)"%>
+<%= f.file_field :image2,class:"form-control"%>
+
+
+<%=f.submit "Submit",class: 'btn btn-primary btn-md'%>
+<% end %>

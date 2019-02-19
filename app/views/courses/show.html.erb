@@ -1,0 +1,44 @@
+<div class="page-header">
+  <h1><%=@course.name%> Scores<small>&nbsp;&nbsp;Total&nbsp;<%=@scores.select(:id).count%>&nbsp;Rounds</small></h1>
+</div>
+
+<div class="datas">
+ <h2>&nbsp;<span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Best Score &nbsp;&gt;&gt;&nbsp;<%=@scores.pluck(:score_total).min%>
+ <% if @scores.order(:score_total).first.present? %>
+   &nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;<%= @scores.order(:score_total).first.date %>
+ <% else %>
+   <p></p>
+ <% end %>
+ <h2>&nbsp;<span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Average Score &nbsp;&gt;&gt;&nbsp;<%=@scores.average(:score_total)%></h2>
+ <h2>&nbsp;<span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;Yearly Average &nbsp;&gt;&gt;&nbsp;<%@scores.group('Year(date)').average(:score_total).map{|k,v| [k,v.to_f]}.to_h.each do|year,year_average|%>
+ Y:&nbsp;<%=year%>&nbsp;/&nbsp;<%=year_average%>&nbsp;&nbsp;&nbsp;
+ <% end %>
+</h2>
+</div>
+
+ <% @scores.each do |score|%>
+    <div class="col-sm-4">
+      <div class="panel panel-<%=score.category.color%>">
+        <div class="panel-heading">
+          <h4 class="panel-title">Date: <%=score.date%></h4>
+            <div class="buttons">
+            <%= link_to "Edit", edit_score_path(score.id),class: 'btn btn-success btn-xs' %>
+            <%= link_to "Delete", score, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+            </div>
+           <h3><%=score.course.name%></h3> 
+        </div>
+        <div class="panel-body">
+          <h4>
+            Score: <%=score.score_total%><br>
+            Put: <%=score.put_total%>
+          </h4>
+          <div class="button">
+            <%=link_to "Score Detail",score_path(score.id),class: 'btn btn-primary btn-la'%>
+          </div>
+        </div>
+      </div>
+   </div> 
+<% end %>
+<%= paginate(@scores) %> 
+
+ 
