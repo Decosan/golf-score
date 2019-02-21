@@ -9,5 +9,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'decosan'
-  config.cache_storage = :fog
+  # config.cache_storage = :fog
 end
