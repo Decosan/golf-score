@@ -1,19 +1,28 @@
 # encoding: utf-8
 
 class Image2Uploader < CarrierWave::Uploader::Base  
+ 
+  if Rails.env.development?
+    storage :file
+  elsif Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
+ 
 
  # リサイズしたり画像形式を変更するのに必要
   include CarrierWave::RMagick
 
  # 画像の上限を700pxにする
-  process :resize_to_limit => [1000, 1000]
+  process :resize_to_fit => [700, 700]
 
-  # 保存形式をJPGにする
-  process :convert => 'jpg'
+  # 保存形式をJPGにする(jpgに変更する必要なし)
+  # process :convert => 'jpg'
 
  # サムネイルを生成する設定
   version :thumb do
-    process :resize_to_limit => [100, 100]
+    process :resize_to_limit => [60, 60]
   end
 
   # jpg,jpeg,gif,pngしか受け付けない

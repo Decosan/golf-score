@@ -20,7 +20,8 @@ class ScoresController < ApplicationController
     if @score.save
       flash[:success]="スコア登録が完了しました"
       redirect_to @score
-    else 
+    else
+      @courses=Course.all.order('alphabet ASC')
       flash[:danger]="スコアの登録に失敗しました"
       render :new
     end  

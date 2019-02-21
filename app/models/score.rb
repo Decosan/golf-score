@@ -4,6 +4,7 @@ class Score < ApplicationRecord
   belongs_to :course
   belongs_to :category
   mount_uploader :image2, Image2Uploader
+  # mount_uploader :image3, Image2Uploader
   
   validates :score_out, presence: true
   validates :score_in, presence: true
