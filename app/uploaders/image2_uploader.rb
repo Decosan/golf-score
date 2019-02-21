@@ -11,9 +11,9 @@ class Image2Uploader < CarrierWave::Uploader::Base
   end
   
   # S3のディレクトリ名
-  #def store_dir
-  #  "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  #end
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
  
 
  # リサイズしたり画像形式を変更するのに必要
