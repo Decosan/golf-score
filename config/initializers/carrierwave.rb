@@ -9,5 +9,8 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'decosan'
+  config.asset_host     =   "https://s3.amazonaws.com/#{config.fog_directory}"
+  config.fog_public     =   false
+  config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
   # config.cache_storage = :fog
 end
