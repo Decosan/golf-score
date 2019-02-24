@@ -1,7 +1,7 @@
 <h1>Select Golf Course</h1>
 
 <%= form_tag courses_path, :method => 'get' do %>
-	<%=text_field_tag :search , params[:search],placeholder:"Please put in"%>
+	<%=text_field_tag :search , params[:search],placeholder:"Keyword.."%>
 	<%=submit_tag "Search"%>
 <% end %>
 <br><br>

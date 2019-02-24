@@ -17,5 +17,9 @@ class ApplicationController < ActionController::Base
     @categories=Category.all
   end
   
+  
+  def counts
+    # @count_scores = current_user.scores.where(category_id: category.id).count 
+  end  
  
 end

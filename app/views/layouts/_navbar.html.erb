@@ -29,7 +29,12 @@
              <ul class="dropdown-menu">
                
                <% @categories.each do |category|%>
-               <li><a href="/categories/<%=category.id%>"><%=category.score_range%></a></li>
+               <li><a href="/categories/<%=category.id%>"><%=category.score_range%>
+               
+                <%#<span class="badge"><%= @count_scores% ></span>%>
+                   
+                   </a>
+               </li>
                <% end %>
              </ul>    
             </li>  
