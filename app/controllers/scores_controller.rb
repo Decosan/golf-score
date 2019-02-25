@@ -47,7 +47,7 @@ class ScoresController < ApplicationController
   end
 
   def update
-    if @score.update(score_params)
+    if @score.update(update_score_params)
       flash[:success]="編集が完了しました"
       redirect_to @score
     else
@@ -69,6 +69,10 @@ class ScoresController < ApplicationController
   
   def score_params
     params.require(:score).permit(:date,:score_out,:score_in,:score_total,:put_out,:put_in,:put_total,:user,:course_id,:category_id,:memo,:image2_cache, pictures_attributes: [:image2])
+  end
+  
+  def update_score_params
+    params.require(:score).permit(:date,:score_out,:score_in,:score_total,:put_out,:put_in,:put_total,:user,:course_id,:category_id,:memo,:image2_cache, pictures_attributes: [:image2, :_destroy, :id])
   end
   
   def correct_user
