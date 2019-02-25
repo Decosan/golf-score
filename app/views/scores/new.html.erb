@@ -2,6 +2,8 @@
 
 <%=form_for(@score)do|f|%>
 
+<%= render 'layouts/error_messages', model: f.object %>
+
 <%= f.label :date,"Date (Year/Month/Day)" %>
 <%= f.date_select :date, {:date_separator => "Please select"},class:"form-control" %>
 
@@ -34,8 +36,8 @@
 <%= f.text_field :memo,class:"form-control" %>
 
 <%= f.label :image2,"Attach Picture (Option)"%>
-<%= f.file_field :image2,class:"form-control"%>
-
-
+<%= f.fields_for :pictures do |picture|%>
+<%= picture.file_field :image2%>
+<% end %>
 <%=f.submit "Submit",class: 'btn btn-primary btn-md'%>
 <% end %>

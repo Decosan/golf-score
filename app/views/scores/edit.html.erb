@@ -34,10 +34,13 @@
 <%= f.label :memo,"Comment (Option,max 255)" %>
 <%= f.text_field :memo,class:"form-control" %>
 
-<%= f.label :image2,"Attach Picture (Option)" %>
-<%= image_tag @score.image2.thumb.url if @score.image2? %>
-<%= f.file_field :image2,class:"form-control"%>
-<%= f.hidden_field :image2_cache %>
+<% @score.pictures.each do |picture|%>
+  <%= image_tag(picture.image2.thumb.url) if @score.pictures.exists? %>
+  <%= f.label(picture.image2,"Attach Picture (Option)") %>
+  <%= f.file_field(picture.image2,class:"form-control")%>
+  <%#= f.hidden_field :image2_cache %>
+<% end %>
+ 
 
 <%=f.submit "Update",class: 'btn btn-primary btn-md'%>
 <% end %>

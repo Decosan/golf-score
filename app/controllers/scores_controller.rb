@@ -10,6 +10,7 @@ class ScoresController < ApplicationController
 
   def new
     @score=Score.new
+    2.times { @score.pictures.build }
     @courses=Course.all.order('alphabet ASC')
     @score.put_total = 0
     @score.score_total = 0
@@ -17,6 +18,8 @@ class ScoresController < ApplicationController
 
   def create
     @score=current_user.scores.build(score_params)
+    
+    
     if @score.save
       flash[:success]="スコア登録が完了しました"
       redirect_to @score
@@ -40,7 +43,7 @@ class ScoresController < ApplicationController
 
   def edit
     @courses=Course.all.order('alphabet ASC')
-    @score.image2.cache! unless @score.image2.blank? 
+    #@score.image2.cache! unless @score.image2.blank? 
   end
 
   def update
@@ -65,7 +68,7 @@ class ScoresController < ApplicationController
   end
   
   def score_params
-    params.require(:score).permit(:date,:score_out,:score_in,:score_total,:put_out,:put_in,:put_total,:user,:course_id,:category_id,:image2,:memo,:image2_cache)
+    params.require(:score).permit(:date,:score_out,:score_in,:score_total,:put_out,:put_in,:put_total,:user,:course_id,:category_id,:memo,:image2_cache, pictures_attributes: [:image2])
   end
   
   def correct_user

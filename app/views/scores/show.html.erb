@@ -19,8 +19,19 @@
     </div>
   </div>
 </div>
-<% if @score.image2? %>
-　　<%= image_tag @score.image2.url %>
-　<% else %>
+
+<%# if @score.pictures.image2? %>
+　　<%#= image_tag @score.pictures.image2.url %>
+　<%# else %>
+　　<%#= image_tag 'noimage.gif' %>
+　<%# end %>
+　
+<% if @score.pictures.exists? %>
+  <ul>
+    <% @score.pictures.each do |picture| %>
+      <li><%= image_tag(picture.image2.url) %></li>
+    <% end %>
+  </ul>
+<% else %>
 　　<%= image_tag 'noimage.gif' %>
-　<% end %>
+<% end %>　
