@@ -45,3 +45,9 @@
  width: 98%;
  border: none;
 }
+div #scores{
+  line-height: 40px;
+}
+body {
+  background-image: url('polygon-background5.jpg');
+}

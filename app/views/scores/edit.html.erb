@@ -41,10 +41,16 @@
   <%#= f.hidden_field :image2_cache %>
 <%# end %>
 
-<%= f.fields_for(:pictures) do |picture| %>
-  <%= image_tag(picture.object.image2.thumb.url) %>
-  <%= picture.file_field(:image2) %>
-  <%= picture.hidden_field :id, value: picture.object.id %>
+<%if @score.pictures.exists? %>
+  <%= f.fields_for(:pictures) do |picture| %>
+    <%= image_tag(picture.object.image2.thumb.url) %>
+    <%= picture.file_field(:image2) %>
+    <%= picture.hidden_field :id, value: picture.object.id %>
+  <% end %>
+<% else %>
+  <%= f.fields_for :pictures do |picture|%>
+  <%= picture.file_field :image2%>
+  <% end %>
 <% end %>
  
 
