@@ -17,10 +17,12 @@
   text-align:right;
   margin-top:-40px;
 }
+
 .buttons{
   text-align:right;
   margin-top:-20px;
 }
+
 .datas{
   padding:5px 8px;
   line-height: 50px;
@@ -32,22 +34,51 @@
   color:white;
   text-shadow:2px 2px 1px black;
 }
+
 .glyphicon{
   color:yellow;
 }
+
 .comment{
   color:#444444;
   margin:10px 20px 10px 20px;
 }
+
 .comment hr {
  height: 2px;
  background-color: gray;
  width: 98%;
  border: none;
 }
+
 div #scores{
   line-height: 40px;
 }
+
 body {
   background-image: url('polygon-background5.jpg');
+}
+
+.toppage_container {
+  background-image: url('payne-stewart.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
+
+.flex_piller {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: flex-end;
+}
+
+.flex_piller h2 {
+  color: #fff;
+  text-shadow: 
+        black 1px 1px 0, black -1px -1px 0,/*右下、左上*/
+        black -1px 1px 0, black 1px -1px 0,/*右上、左下*/
+        black 0px 1px 0, black  0-1px 0,/*右、左*/
+        black -1px 0 0, black 1px 0 0;/*上、下*/
 }

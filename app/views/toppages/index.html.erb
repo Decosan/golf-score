@@ -1,16 +1,12 @@
 <% if logged_in? %>
   <h3 style="color: #316745;">logged_in player: <%= current_user.name %></h3>
-   <div class="center jumbotron">
-    
-    <img src="<%= asset_path "payne-stewart.jpg" %>" alt="" width="980" height="500" />
-    <div id="photo",style="background-image:url(<%= asset_path "payne-stewart.jpg" %>)" />
-    
-      <div class="text-left">
-        <h2>New Score: &nbsp;&nbsp;<%= link_to 'Create!', new_score_path, class: 'btn btn-la btn-info' %>
+   <div class="center jumbotron toppage_container">
+    <div>
+      <div class="text-left flex_piller">
+        <h2>New Score: <%= link_to 'Create!', new_score_path, class: 'btn btn-la btn-info' %></h2>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Score Card Library:&nbsp;&nbsp;<%= link_to 'All Scores!', scores_path, class: 'btn btn-la btn-success' %>        
-        <%= link_to 'Scores by Courses!', courses_path, class: 'btn btn-la btn-warning' %></h2>
+        <h2>My Scores:<%= link_to 'All Scores!', scores_path, class: 'btn btn-la btn-success' %>       
+        <h2>Golf Courses:<%= link_to 'Scores by Courses!', courses_path, class: 'btn btn-la btn-warning' %></h2> </h2>
         
       </div>
     </div>
