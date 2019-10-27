@@ -2,7 +2,7 @@
   <h3 style="color: #316745;">logged_in player: <%= current_user.name %></h3>
    <div class="center jumbotron toppage_container">
     <div>
-      <div class="text-left flex_piller">
+      <div class="text-left flex_piller padding_top">
         <h2>New Score: <%= link_to 'Create!', new_score_path, class: 'btn btn-la btn-info' %></h2>
 
         <h2>My Scores:<%= link_to 'All Scores!', scores_path, class: 'btn btn-la btn-success' %>       
@@ -12,7 +12,7 @@
     </div>
    </div>
 <% else %>  
-  <div class="center jumbotron">
+  <div class="center jumbotron welcome_page margin_top">
     <div class="text-center">
       <h1>Welcome to the Golf Score MGR</h1>
       <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
